@@ -1,0 +1,3 @@
+
+/*C2*/SET SCHEMA PUBLIC
+create table users (login varchar(45),password varchar(45), email varchar(45),premium boolean, admin boolean)
