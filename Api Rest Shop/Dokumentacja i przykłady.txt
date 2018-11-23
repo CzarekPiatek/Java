@@ -1,0 +1,155 @@
+Dokumentacja 
+
+Dodanie produktu do bazy
+Metoda: POST
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/
+Przykłady:
+{	
+	"name":"GTX 1030",
+	"category":"Karty Graficzne",
+	"price":250
+}
+
+{	
+	"name":"GTX 1050",
+	"category":"Karty Graficzne",
+	"price":400
+}
+
+{	
+	"name":"GTX 1060",
+	"category":"Karty Graficzne",
+	"price":550
+}
+
+{	
+	"name":"GTX 1070 Ti",
+	"category":"Karty Graficzne",
+	"price":1400
+}
+
+{	
+	"name":"Asrock",
+	"category":"Plyty glowne",
+	"price":300
+}
+
+{	
+	"name":"SSD 240GB",
+	"category":"Dyski Twarde",
+	"price":300
+}
+
+{	
+	"name":"SSD 480GB",
+	"category":"Dyski Twarde",
+	"price":450
+}
+
+{	
+	"name":"8GB",
+	"category":"Pamieci RAM",
+	"price":150
+}
+
+{	
+	"name":"16GB",
+	"category":"Pamieci RAM",
+	"price":250.50
+}
+
+
+Wyszukanie i wypisanie produktu o danym ID
+Metoda: GET
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/{id}
+Przyklady:
+http://localhost:8080/samplerestapp/rest/product/2
+http://localhost:8080/samplerestapp/rest/product/1
+http://localhost:8080/samplerestapp/rest/product/3
+
+
+Wyszukanie i wypisanie wszystkich produtków
+Metoda: GET
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/all
+Przykłady: 
+http://localhost:8080/samplerestapp/rest/product/all
+
+Wypisanie produktów z przedziału cenowego (wartosc od do)
+Metoda: GET
+Ścieżka http://localhost:8080/samplerestapp/rest/product/search/price/{lower}.{higher}
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/search/price/200.400
+http://localhost:8080/samplerestapp/rest/product/search/price/50.100
+http://localhost:8080/samplerestapp/rest/product/search/price/400.1500
+
+Wyszukanie i wypisanie produktu po nazwie
+Metoda: GET
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/search/name/{name}
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/search/name/SSD
+http://localhost:8080/samplerestapp/rest/product/search/name/GTX
+http://localhost:8080/samplerestapp/rest/product/search/name/GB
+
+Wyszukanie i wypisanie produktu po kategorii
+Metoda: GET
+
+Modyfikacje danych po id 
+Metoda: PUT
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/{id}
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/8
+{	
+	"name":"8GB",
+	"category":"Pamieci RAM",
+	"price":170
+}
+
+http://localhost:8080/samplerestapp/rest/product/6
+{	
+	"name":"SSD 240GB",
+	"category":"Dyski Twarde",
+	"price":350
+}
+
+Usuwanie produktu z bazy
+Metoda: DELETE
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/{id}
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/6
+http://localhost:8080/samplerestapp/rest/product/4
+http://localhost:8080/samplerestapp/rest/product/2
+
+Dodanie komenatarza do produktu
+Metoda: POST
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/{id}/comment
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/1/comment
+{
+	"comment" : "Bardzo dobra karta graficzna"
+}
+
+http://localhost:8080/samplerestapp/rest/product/2/comment
+{
+	"comment" : "Tania slaba"
+}
+
+http://localhost:8080/samplerestapp/rest/product/3/comment
+{
+	"comment" : "Nie polecam"
+}
+
+Wyswietlenie komentarzy po id
+Metoda: GET
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/{id}/comment/
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/2/comment/
+http://localhost:8080/samplerestapp/rest/product/1/comment/
+http://localhost:8080/samplerestapp/rest/product/3/comment/
+
+Usuwanie komentarza
+Metoda: DELETE
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/{id}/comment/
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/2/comment/
+http://localhost:8080/samplerestapp/rest/product/1/comment/
+http://localhost:8080/samplerestapp/rest/product/3/comment/
