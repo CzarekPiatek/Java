@@ -138,13 +138,20 @@ http://localhost:8080/samplerestapp/rest/product/3/comment
 	"comment" : "Nie polecam"
 }
 
-Wyswietlenie komentarzy po id
+Wyswietlenie komentarza o id
 Metoda: GET
 Ścieżka: http://localhost:8080/samplerestapp/rest/product/{id}/comment/
 Przykłady:
 http://localhost:8080/samplerestapp/rest/product/2/comment/
 http://localhost:8080/samplerestapp/rest/product/1/comment/
 http://localhost:8080/samplerestapp/rest/product/3/comment/
+
+Wypisanie wszystkich komentarzy
+Metoda: GET
+Ścieżka: http://localhost:8080/samplerestapp/rest/product/comment/all
+Przykłady:
+http://localhost:8080/samplerestapp/rest/product/comment/all
+
 
 Usuwanie komentarza
 Metoda: DELETE

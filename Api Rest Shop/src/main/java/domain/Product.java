@@ -14,7 +14,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.*;
 
-
 @XmlRootElement
 @Entity
 @NamedQueries({
@@ -31,11 +30,10 @@ public class Product {
 	private String name;
 	private String category;
 	private float price;
-	@XmlTransient
-	private List<Comment> comment = new ArrayList<Comment>();
+
+	private transient List<Comment> comment = new ArrayList<Comment>();
 	
 
-	@XmlTransient
 	@OneToMany(mappedBy="product")
 	public List<Comment> getComment() {
 		return comment;

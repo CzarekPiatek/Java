@@ -26,14 +26,15 @@ public class ProductResources {
 
 	@PersistenceContext
 	EntityManager em;
-    
+
 	// dodaj produkt
-		@POST
-		@Consumes(MediaType.APPLICATION_JSON)
-		public Response Add(Product product) {
-			em.persist(product);
-			return Response.ok(product.getId()).build();
-		}
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response Add(Product product) {
+		em.persist(product);
+		return Response.ok(product.getId()).build();
+	}
+
 	// wypisz wszystkie produkty
 	@GET
 	@Path("/all")
@@ -54,35 +55,35 @@ public class ProductResources {
 		}
 		return Response.ok(result).build();
 	}
+
 	// przedzial cenowy
 	@GET
 	@Path("/search/price/{lower}.{higher}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Product> getPrice(@PathParam("lower") float lower,@PathParam("higher") float higher) {
-		return em.createNamedQuery("product.price", Product.class)
-				.setParameter("lower", lower).setParameter("higher", higher).getResultList();
+	public List<Product> getPrice(@PathParam("lower") float lower, @PathParam("higher") float higher) {
+		return em.createNamedQuery("product.price", Product.class).setParameter("lower", lower)
+				.setParameter("higher", higher).getResultList();
 
-	
 	}
-	
+
 	// szukaj po nazwie
 	@GET
 	@Path("/search/name/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public  List<Product> getName(@PathParam("name") String name) {
+	public List<Product> getName(@PathParam("name") String name) {
 		return em.createNamedQuery("product.name", Product.class).setParameter("name", name).getResultList();
-		
+
 	}
-	
+
 	// szukaj po kategorii
-		@GET
-		@Path("/search/category/{category}")
-		@Produces(MediaType.APPLICATION_JSON)
-		public  List<Product> getCategory(@PathParam("category") String category) {
-			return em.createNamedQuery("product.category", Product.class).setParameter("category", category).getResultList();
-			
-		}
-	
+	@GET
+	@Path("/search/category/{category}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Product> getCategory(@PathParam("category") String category) {
+		return em.createNamedQuery("product.category", Product.class).setParameter("category", category)
+				.getResultList();
+
+	}
 
 	// uaktualnij produkt
 	@PUT
@@ -131,16 +132,25 @@ public class ProductResources {
 	}
 
 	// wypisz komentarz
+
 	@GET
 	@Path("/{id}/comment")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Comment> GetComment(@PathParam("id") int id) {
-		Product result = em.createNamedQuery("product.id", Product.class).setParameter("productId", id)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getComment(@PathParam("id") int id) {
+		Comment result = em.createNamedQuery("comment.id", Comment.class).setParameter("commentId", id)
 				.getSingleResult();
 		if (result == null) {
-			return null;
+			return Response.status(404).build();
 		}
-		return result.getComment();
+		return Response.ok(result).build();
+	}
+
+	// wypisz wszystkie komentarze
+	@GET
+	@Path("/comment/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Product> getAllComments() {
+		return em.createNamedQuery("comment.all", Product.class).getResultList();
 	}
 
 	// usun komentarz

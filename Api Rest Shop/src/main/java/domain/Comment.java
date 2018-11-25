@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 
 @XmlRootElement
@@ -29,7 +28,7 @@ public class Comment {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	@XmlTransient
+	
 	@ManyToOne
 	private Product product;
 	
