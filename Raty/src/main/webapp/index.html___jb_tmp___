@@ -7,7 +7,7 @@
 <body>
 	<form action="Installments" method="post">
 		<label>Wnioskowana kwota kredytu: <input type="text"
-												 id="Amount" name="wnioskowanaKwotaKredytu"></label><br>
+			id="wnioskowanaKwotaKredytu" name="wnioskowanaKwotaKredytu"></label><br>
 		<label>Ilosc rat: <input type="text" id="iloscRat"
 			name="iloscRat"></label><br> <label>Oprocentowanie (w
 			skali roku): 0-100%<input type="text" id="oprocentowanie"
